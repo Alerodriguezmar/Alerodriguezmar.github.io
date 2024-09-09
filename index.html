@@ -3,52 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timestamp</title>
+    <title>Línea de Tiempo</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            overflow: hidden; /* Ocultar el scroll en el body */
+            height: 100vh; /* Asegurar que el body ocupe el 100% de la altura de la pantalla */
         }
 
-        .container {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
+        .timeline {
+            position: relative;
+            margin: 0; /* Elimina márgenes para ocupar toda la pantalla */
+            padding: 0; /* Elimina relleno para ocupar toda la pantalla */
+            width: 100vw; /* Asegura que el contenedor ocupe todo el ancho de la vista */
+            height: 100vh; /* Asegura que el contenedor ocupe toda la altura de la vista */
+            overflow-y: scroll; /* Scroll interno */
+            background: url('images/playa.gif') no-repeat center center; /* Fondo GIF para el área de scroll */
+            background-size: cover; /* Ajusta el tamaño del fondo para cubrir el área */
         }
 
-        h1 {
-            font-size: 24px;
-            margin-bottom: 10px;
+        .timeline::-webkit-scrollbar {
+            display: none; /* Ocultar barra de scroll */
         }
 
-        p {
-            font-size: 18px;
-            color: #333333;
+        .timeline-item {
+            margin: 20px auto; /* Espaciado vertical entre las tarjetas */
+            position: relative;
+            padding: 10px; /* Ajustado para que las tarjetas se alineen mejor */
+            cursor: pointer; /* Cambia el cursor para indicar que es interactivo */
+            transition: all 0.3s ease; /* Transición suave para expansión */
+            width: 200px; /* Ancho reducido para las tarjetas */
+            text-align: center; /* Alineación del texto al centro */
+        }
+
+        .timeline-content {
+            background-color: #ffffff; /* Fondo blanco para las tarjetas */
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            width: 100%; /* Asegura que el contenido ocupe todo el ancho de la tarjeta */
+            max-height: 35px; /* Altura inicial de la tarjeta para mostrar solo la fecha */
+            overflow: hidden; /* Ocultar el contenido adicional */
+            opacity: 0.8; /* Opacidad inicial */
+            text-align: center; /* Alineación del texto al centro */
+        }
+
+        .timeline-item.expanded {
+            width: 400px; /* Ancho aumentado cuando está expandida */
+        }
+
+        .timeline-content.expanded {
+            max-height: 300px; /* Altura máxima al expandir */
+            opacity: 1; /* Opacidad completa */
+        }
+
+        .timeline-content h2 {
+            margin: 0;
+            color: #333;
+            font-size: 16px; /* Tamaño de fuente para la fecha */
+            /*font-weight: normal; /* Asegura que la fuente no esté en negrita */
+        }
+
+        .timeline-content p {
+            margin: 0;
+            color: #666;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Timestamp Actual</h1>
-        <p id="timestamp"></p>
+    <!-- Elemento de audio para reproducir el sonido -->
+    <audio id="background-music" src="sounds/mar.mp3" autoplay loop>
+        Tu navegador no soporta la etiqueta de audio.
+    </audio>
+
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h2>2001</h2>
+                <p>Evento importante 1</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h2>2002</h2>
+                <p>Evento importante 2</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h2>2003</h2>
+                <p>Evento importante 3</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h2>2004</h2>
+                <p>Evento importante 4</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h2>2005</h2>
+                <p>Evento importante 5</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h2>2006</h2>
+                <p>Evento importante 6</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h2>2007</h2>
+                <p>Evento importante 7</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h2>2008</h2>
+                <p>Evento importante 8</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h2>2009</h2>
+                <p>Evento importante 9</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h2>2010</h2>
+                <p>Evento importante 10</p>
+            </div>
+        </div>
     </div>
 
     <script>
-        function mostrarTimestamp() {
-            const fecha = new Date();
-            document.getElementById('timestamp').textContent = fecha.toLocaleString();
-        }
-
-        // Mostrar el timestamp cuando se carga la página
-        window.onload = mostrarTimestamp;
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const content = item.querySelector('.timeline-content');
+                item.classList.toggle('expanded');
+                content.classList.toggle('expanded');
+            });
+        });
     </script>
 </body>
 </html>
