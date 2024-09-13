@@ -68,12 +68,31 @@
             margin: 0;
             color: #333;
             font-size: 16px; /* Tamaño de fuente para la fecha */
-            /*font-weight: normal; /* Asegura que la fuente no esté en negrita */
         }
 
         .timeline-content p {
             margin: 0;
             color: #666;
+        }
+
+        /* Estilo para el corazón como enlace */
+        .timeline-link {
+            display: none; /* No mostrar inicialmente */
+            font-size: 20px;
+            color: red;
+            text-decoration: none;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        /* Mostrar el corazón solo cuando la tarjeta esté expandida */
+        .timeline-item.expanded .timeline-link {
+            display: inline-block;
+        }
+
+        .timeline-link:hover {
+            color: darkred; /* Cambia el color al pasar el cursor */
         }
     </style>
 </head>
@@ -86,60 +105,70 @@
     <div class="timeline">
         <div class="timeline-item">
             <div class="timeline-content">
+                <a href="evento_2001.html" class="timeline-link">♥</a>
                 <h2>2001</h2>
                 <p>Evento importante 1</p>
             </div>
         </div>
         <div class="timeline-item">
             <div class="timeline-content">
+                <a href="evento_2002.html" class="timeline-link">♥</a>
                 <h2>2002</h2>
                 <p>Evento importante 2</p>
             </div>
         </div>
         <div class="timeline-item">
             <div class="timeline-content">
+                <a href="evento_2003.html" class="timeline-link">♥</a>
                 <h2>2003</h2>
                 <p>Evento importante 3</p>
             </div>
         </div>
         <div class="timeline-item">
             <div class="timeline-content">
+                <a href="evento_2004.html" class="timeline-link">♥</a>
                 <h2>2004</h2>
                 <p>Evento importante 4</p>
             </div>
         </div>
         <div class="timeline-item">
             <div class="timeline-content">
+                <a href="evento_2005.html" class="timeline-link">♥</a>
                 <h2>2005</h2>
                 <p>Evento importante 5</p>
             </div>
         </div>
         <div class="timeline-item">
             <div class="timeline-content">
+                <a href="evento_2006.html" class="timeline-link">♥</a>
                 <h2>2006</h2>
                 <p>Evento importante 6</p>
             </div>
         </div>
         <div class="timeline-item">
             <div class="timeline-content">
+                <a href="evento_2007.html" class="timeline-link">♥</a>
                 <h2>2007</h2>
                 <p>Evento importante 7</p>
             </div>
         </div>
         <div class="timeline-item">
             <div class="timeline-content">
+                <a href="evento_2008.html" class="timeline-link">♥</a>
                 <h2>2008</h2>
                 <p>Evento importante 8</p>
             </div>
         </div>
         <div class="timeline-item">
             <div class="timeline-content">
+                <a href="evento_2009.html" class="timeline-link">♥</a>
                 <h2>2009</h2>
                 <p>Evento importante 9</p>
             </div>
         </div>
         <div class="timeline-item">
             <div class="timeline-content">
+                <a href="evento_2010.html" class="timeline-link">♥</a>
                 <h2>2010</h2>
                 <p>Evento importante 10</p>
             </div>
